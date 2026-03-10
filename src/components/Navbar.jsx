@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FiCalendar, FiMenu, FiX, FiChevronDown } from "react-icons/fi";
-import logo from "../../public/image/gyno_logo.jpeg";
+import logo from "/image/gyno_logo.jpeg";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);

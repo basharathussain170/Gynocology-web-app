@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import one from "../../public/image/1.png"
-import two from "../../public/image/2.png"
-import three from "../../public/image/3.png"
-import four from "../../public/image/4.png"
-import five from "../../public/image/5.png"
-import six from "../../public/image/6.png"
-import seven from "../../public/image/7.png"
-import eight from "../../public/image/8.png"
-import nine from "../../public/image/9.png"
+import one from "/image/1.png"
+import two from "/image/2.png"
+import three from "/image/3.png"
+import four from "/image/4.png"
+import five from "/image/5.png"
+import six from "/image/6.png"
+import seven from "/image/7.png"
+import eight from "/image/8.png"
+import nine from "/image/9.png"
 
 const months = [
   { month: 1, label: '1 Month', img: one },

@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import { FiArrowRight, FiCalendar } from 'react-icons/fi'
+import { Link } from "react-router-dom";
+import { FiArrowRight, FiCalendar } from "react-icons/fi";
 
 const HeroSection = () => {
   return (
@@ -16,24 +16,33 @@ const HeroSection = () => {
           {/* Left Content */}
           <div className="relative z-10 animate-fadeInUp">
             <p className="section-tag">
-              <span className="w-8 h-0.5 bg-primary inline-block"></span>
+              <span className="w-8 h-0.5 bg-[#db479d] inline-block"></span>
               GYNECOLOGY
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-secondary leading-tight mb-6">
-              We want you to{' '}
-              <span className="text-secondary">experience birthing</span>{' '}
-              <span className="text-primary">with lots of love!</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-secondary font-sans">
+              <span className="block md:mb-3">We want you to</span>
+              <span className="block md:mb-3 text-secondary">
+                experience birthing
+              </span>
+              <span className="block text-[#db479d] mb-5">
+                with lots of love!
+              </span>
             </h1>
-            <p className="text-gray-500 text-lg mb-8 max-w-lg leading-relaxed">
-              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+            <p className="text-[#666] text-lg font-sans mb-8 max-w-lg leading-relaxed">
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                to="/contact"
-                className="btn-primary shadow-lg shadow-primary/30 text-base px-8 py-4"
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("about-us")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="flex items-center gap-2 bg-[#db479d] text-white shadow-lg text-lg px-8 py-3 rounded-full hover:bg-[#c63f8e] transition"
               >
-                <FiCalendar /> Book Appointment
-              </Link>
+                Read More <FiArrowRight />
+              </button>
               <Link
                 to="/services"
                 className="flex items-center gap-2 font-bold text-secondary hover:text-primary transition-colors px-4 py-4"
@@ -45,13 +54,20 @@ const HeroSection = () => {
             {/* Stats */}
             <div className="flex flex-wrap gap-6 mt-12">
               {[
-                { num: '15+', label: 'Years Experience' },
-                { num: '5K+', label: 'Happy Patients' },
-                { num: '25+', label: 'Expert Doctors' },
+                { num: "15+", label: "Years Experience" },
+                { num: "5K+", label: "Happy Patients" },
+                { num: "25+", label: "Expert Doctors" },
               ].map((stat) => (
-                <div key={stat.label} className="stat-card px-6 py-4 text-center">
-                  <div className="text-2xl font-extrabold text-primary">{stat.num}</div>
-                  <div className="text-xs text-gray-500 font-semibold">{stat.label}</div>
+                <div
+                  key={stat.label}
+                  className="stat-card px-6 py-4 text-center"
+                >
+                  <div className="text-2xl font-extrabold text-[#db479d]">
+                    {stat.num}
+                  </div>
+                  <div className="text-xs text-gray-500 font-semibold">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -68,23 +84,32 @@ const HeroSection = () => {
               {/* Decorative dots */}
               <div className="absolute top-6 right-6 grid grid-cols-3 gap-2">
                 {[...Array(9)].map((_, i) => (
-                  <div key={i} className="w-2 h-2 bg-primary/30 rounded-full"></div>
+                  <div
+                    key={i}
+                    className="w-2 h-2 bg-primary/30 rounded-full"
+                  ></div>
                 ))}
               </div>
             </div>
             {/* Floating card */}
             <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 z-20">
-              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white text-xl">❤️</div>
+              <div className="w-12 h-12 bg-[#db479d] rounded-xl flex items-center justify-center text-white text-xl">
+                ❤️
+              </div>
               <div>
-                <div className="font-bold text-secondary text-sm">Expert Care</div>
-                <div className="text-xs text-gray-400">24/7 Support Available</div>
+                <div className="font-bold text-secondary text-sm">
+                  Expert Care
+                </div>
+                <div className="text-xs text-gray-400">
+                  24/7 Support Available
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

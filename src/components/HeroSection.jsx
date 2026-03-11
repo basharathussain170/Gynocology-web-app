@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FiArrowRight, FiCalendar } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 
 const HeroSection = () => {
   return (

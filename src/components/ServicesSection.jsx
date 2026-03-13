@@ -33,7 +33,7 @@ const services = [
     description: 'It is a long established fact that a reader will be distracted.',
     image: '/Home-img/img1 (1).webp',
   },
-]
+];
 
 const ServicesSection = () => {
   const [activeCard, setActiveCard] = useState(2)
@@ -135,7 +135,7 @@ const ServicesSection = () => {
 
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default ServicesSection

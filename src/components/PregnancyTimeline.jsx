@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import one from "../../public/image/1.png"
-import two from "../../public/image/2.png"
-import three from "../../public/image/3.png"
-import four from "../../public/image/4.png"
-import five from "../../public/image/5.png"
-import six from "../../public/image/6.png"
-import seven from "../../public/image/7.png"
-import eight from "../../public/image/8.png"
-import nine from "../../public/image/9.png"
+import one from "/image/1.png"
+import two from "/image/2.png"
+import three from "/image/3.png"
+import four from "/image/4.png"
+import five from "/image/5.png"
+import six from "/image/6.png"
+import seven from "/image/7.png"
+import eight from "/image/8.png"
+import nine from "/image/9.png"
 
 const months = [
   { month: 1, label: '1 Month', img: one },
@@ -28,7 +28,7 @@ const PregnancyTimeline = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-secondary text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold font-sans text-secondary text-center mb-16">
           Taking Care of You and Your<br />Baby Pregnancy Timeline
         </h2>
       </div>

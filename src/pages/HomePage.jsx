@@ -18,7 +18,7 @@ const HomePage = () => {
       <AppointmentSection />
       <NutritionSection />
       <WhoWeHelp />
-      <FAQSection />
+      {/* <FAQSection /> */}
       <TestimonialsSection />
     </main>
   )

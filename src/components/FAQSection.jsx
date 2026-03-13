@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { FiChevronRight } from 'react-icons/fi'
+import { FiChevronRight, FiChevronDown } from 'react-icons/fi'
 
 const faqs = [
   {
-    q: 'How much do you charge for pedicure?',
+    q: 'How much do you charge for pedicure ?',
     a: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its. The point of using Lorem Ipsum is that it has a more-or-less normal distribution',
   },
   {
@@ -11,11 +11,11 @@ const faqs = [
     a: 'We offer comprehensive gynecological services including prenatal care, fertility treatments, well-woman examinations, contraceptive counseling, and much more. Our experienced team is here to support you.',
   },
   {
-    q: 'How do I book my appointment?',
+    q: 'How do i book my appointment ?',
     a: 'You can book an appointment through our website using the appointment form, by calling our office, or by visiting us in person. We offer flexible scheduling to accommodate your needs.',
   },
   {
-    q: 'Can I cancel my appointment',
+    q: 'Can i cancel my appointment',
     a: 'Yes, you can cancel or reschedule your appointment with at least 24 hours notice. Please contact our office by phone or email to make any changes to your booking.',
   },
 ]
@@ -26,48 +26,62 @@ const FAQSection = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left Image */}
-          <div className="relative">
-            <div className="rounded-3xl overflow-hidden h-96 bg-gradient-to-br from-gray-100 to-pink-50 flex items-center justify-center shadow-xl">
-              <div className="text-center text-gray-400">
-                <div className="text-8xl mb-4">👩</div>
-                <p className="text-lg font-semibold">FAQ Image</p>
-                <p className="text-sm">Replace with actual photo</p>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+          {/* Left — real image */}
+          <div className="rounded-2xl overflow-hidden shadow-lg" style={{ height: '420px' }}>
+            <img
+              src="/Home-img/image (1).webp"
+              alt="Mother with baby"
+              className="w-full h-full object-cover object-center"
+            />
           </div>
 
-          {/* Right FAQs */}
-          <div>
-            <h2 className="section-title mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-500 mb-8 leading-relaxed">
-              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+          {/* Right — FAQs */}
+          <div className="pt-0 lg:pt-2">
+            <h2
+              className="font-extrabold mb-4"
+              style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.4rem)', color: '#2d1050', lineHeight: 1.2 }}
+            >
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-500 mb-8 leading-relaxed text-sm sm:text-base">
+              It is a long established fact that a reader will be distracted by the readable content of a
+              page when looking at its layout.
             </p>
 
-            <div className="space-y-0">
-              {faqs.map((faq, i) => (
-                <div key={i} className="faq-item">
-                  <button
-                    className="w-full flex items-center justify-between py-4 text-left group"
-                    onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  >
-                    <span className={`font-semibold text-base transition-colors ${openIndex === i ? 'text-primary' : 'text-secondary group-hover:text-primary'}`}>
-                      {faq.q}
-                    </span>
-                    <FiChevronRight
-                      className={`flex-shrink-0 ml-4 text-primary transition-transform duration-300 ${openIndex === i ? 'rotate-90' : ''}`}
-                    />
-                  </button>
-                  {openIndex === i && (
-                    <div className="pb-4 text-gray-500 text-sm leading-relaxed">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              ))}
+            <div className="divide-y divide-gray-200">
+              {faqs.map((faq, i) => {
+                const isOpen = openIndex === i
+                return (
+                  <div key={i}>
+                    <button
+                      className="w-full flex items-center justify-between py-4 text-left group"
+                      onClick={() => setOpenIndex(isOpen ? null : i)}
+                    >
+                      <span
+                        className="font-semibold text-sm sm:text-base pr-4"
+                        style={{ color: '#2d1050' }}
+                      >
+                        {faq.q}
+                      </span>
+                      {isOpen
+                        ? <FiChevronDown size={18} style={{ color: '#d63384', flexShrink: 0 }} />
+                        : <FiChevronRight size={18} style={{ color: '#2d1050', flexShrink: 0 }} />
+                      }
+                    </button>
+
+                    {isOpen && (
+                      <div className="pb-5 text-gray-500 text-sm leading-relaxed">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </div>
+
         </div>
       </div>
     </section>

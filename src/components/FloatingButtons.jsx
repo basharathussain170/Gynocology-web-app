@@ -13,19 +13,7 @@ const FloatingButtons = () => {
 
   return (
     <>
-      {/* Left Social sidebar */}
-      <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-0">
-        <div className="bg-gray-100 px-2 py-6 flex flex-col items-center gap-4">
-          <span className="side-social text-xs font-bold text-gray-500 tracking-widest">4/7 EMERGENCY SERVICE</span>
-        </div>
-        <button className="bg-teal-500 hover:bg-teal-600 text-white w-10 h-10 flex items-center justify-center transition-colors">
-          <FiHeadphones size={18} />
-        </button>
-        <button className="bg-primary hover:bg-primary-dark text-white w-10 h-10 flex items-center justify-center transition-colors">
-          <FiShoppingCart size={18} />
-        </button>
-      </div>
-
+      
       {/* Right Social links */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-4 pr-2">
         <a href="#" className="side-social text-xs font-bold text-gray-400 hover:text-primary tracking-widest transition-colors">INSTAGRAM</a>

@@ -1,115 +1,165 @@
-import { Link } from "react-router-dom";
-import { FiArrowRight } from "react-icons/fi";
+import { Link } from 'react-router-dom'
+import { FiArrowRight } from 'react-icons/fi'
+import { BsPlayCircle } from 'react-icons/bs'
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-br from-white via-pink-50 to-purple-50">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-0 w-1/2 h-full bg-gradient-to-l from-pink-100/40 to-transparent"></div>
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+    <section className="relative min-h-screen overflow-hidden bg-white">
+
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: "url('/Home-img/banner-1.webp')",
+          backgroundPosition: 'right center',
+        }}
+      />
+
+      {/* ── Mobile (< lg): strong white gradient from left+top so text area is clean white,
+              image only shows through on the right/bottom ── */}
+      <div
+        className="absolute inset-0 lg:hidden"
+        style={{
+          background: `
+            linear-gradient(
+              to bottom right,
+              rgba(255,255,255,1)   0%,
+              rgba(255,255,255,1)   40%,
+              rgba(255,255,255,0.85) 58%,
+              rgba(255,255,255,0.3)  75%,
+              rgba(255,255,255,0)   100%
+            )
+          `,
+        }}
+      />
+
+      {/* ── Desktop (lg+): white left → transparent right ── */}
+      <div
+        className="absolute inset-0 hidden lg:block"
+        style={{
+          background:
+            'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.97) 32%, rgba(255,255,255,0.7) 58%, rgba(255,255,255,0) 78%)',
+        }}
+      />
+
+      {/* 24/7 EMERGENCY SERVICE — desktop only */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden xl:flex items-center gap-2 pl-2">
+        <span
+          className="text-xs font-bold tracking-widest uppercase"
+          style={{
+            writingMode: 'vertical-rl',
+            transform: 'rotate(180deg)',
+            color: '#4a2060',
+            letterSpacing: '0.18em',
+          }}
+        >
+          24/7 EMERGENCY SERVICE
+        </span>
+        <div className="w-px h-16 bg-gray-300" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full py-16">
-          {/* Left Content */}
-          <div className="relative z-10 animate-fadeInUp">
-            <p className="section-tag">
-              <span className="w-8 h-0.5 bg-[#db479d] inline-block"></span>
-              GYNECOLOGY
-            </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-secondary font-sans">
-              <span className="block md:mb-3">We want you to</span>
-              <span className="block md:mb-3 text-secondary">
-                experience birthing
-              </span>
-              <span className="block text-[#db479d] mb-5">
-                with lots of love!
-              </span>
-            </h1>
-            <p className="text-[#666] text-lg font-sans mb-8 max-w-lg leading-relaxed">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("about-us")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="flex items-center gap-2 bg-[#db479d] text-white shadow-lg text-lg px-8 py-3 rounded-full hover:bg-[#c63f8e] transition"
-              >
-                Read More <FiArrowRight />
-              </button>
-              <Link
-                to="/services"
-                className="flex items-center gap-2 font-bold text-secondary hover:text-primary transition-colors px-4 py-4"
-              >
-                Our Services <FiArrowRight />
-              </Link>
-            </div>
+      {/* Main content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-20 min-h-screen flex items-center">
+        <div className="w-full lg:max-w-xl pt-24 pb-16 sm:pt-32 sm:pb-20 lg:py-24">
 
-            {/* Stats */}
-            <div className="flex flex-wrap gap-6 mt-12">
-              {[
-                { num: "15+", label: "Years Experience" },
-                { num: "5K+", label: "Happy Patients" },
-                { num: "25+", label: "Expert Doctors" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="stat-card px-6 py-4 text-center"
-                >
-                  <div className="text-2xl font-extrabold text-[#db479d]">
-                    {stat.num}
-                  </div>
-                  <div className="text-xs text-gray-500 font-semibold">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* Tag */}
+          <p
+            className="font-extrabold tracking-widest uppercase mb-3"
+            style={{ color: '#d63384', letterSpacing: '0.2em', fontSize: '0.82rem' }}
+          >
+            GYNECOLOGY
+          </p>
 
-          {/* Right - Image placeholder */}
-          <div className="relative hidden lg:block">
-            <div className="relative z-10 rounded-3xl overflow-hidden h-[520px] bg-gradient-to-br from-pink-200 to-purple-100 flex items-center justify-center shadow-2xl">
-              <div className="text-center text-gray-400 p-8">
-                <div className="text-8xl mb-4">👩‍⚕️</div>
-                <p className="text-lg font-semibold">Hero Image</p>
-                <p className="text-sm">Replace with actual photo</p>
-              </div>
-              {/* Decorative dots */}
-              <div className="absolute top-6 right-6 grid grid-cols-3 gap-2">
-                {[...Array(9)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-2 h-2 bg-primary/30 rounded-full"
-                  ></div>
-                ))}
-              </div>
-            </div>
-            {/* Floating card */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 z-20">
-              <div className="w-12 h-12 bg-[#db479d] rounded-xl flex items-center justify-center text-white text-xl">
-                ❤️
-              </div>
-              <div>
-                <div className="font-bold text-secondary text-sm">
-                  Expert Care
-                </div>
-                <div className="text-xs text-gray-400">
-                  24/7 Support Available
-                </div>
-              </div>
-            </div>
+          {/* Heading */}
+          <h1
+            className="font-extrabold leading-tight mb-4"
+            style={{
+              fontSize: 'clamp(1.65rem, 5vw, 3.4rem)',
+              color: '#2d1050',
+              lineHeight: 1.18,
+            }}
+          >
+            We want you to experience
+            birthing with lots of love!
+          </h1>
+
+          {/* Subtitle */}
+          <p
+            className="leading-relaxed mb-8"
+            style={{
+              fontSize: 'clamp(0.875rem, 1.4vw, 1rem)',
+              color: '#555',
+              maxWidth: '480px',
+            }}
+          >
+            It is a long established fact that a reader will be distracted by the
+            readable content of a page when looking at its layout.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <Link
+              to="/about"
+              className="flex items-center gap-2 font-bold text-white rounded-full transition-all hover:opacity-90 hover:shadow-lg"
+              style={{
+                background: 'linear-gradient(135deg, #d63384 0%, #c0267a 100%)',
+                boxShadow: '0 8px 24px rgba(214,51,132,0.35)',
+                fontSize: 'clamp(0.85rem, 1.3vw, 1rem)',
+                padding: '0.85rem 1.8rem',
+              }}
+            >
+              Read More <FiArrowRight />
+            </Link>
+
+            <button
+              className="flex items-center gap-2 font-semibold transition-opacity hover:opacity-70"
+              style={{ color: '#2d1050', fontSize: 'clamp(0.85rem, 1.3vw, 1rem)' }}
+            >
+              <BsPlayCircle size={20} style={{ color: '#d63384' }} />
+              Watch Highlight
+            </button>
           </div>
         </div>
+      </div>
+
+      {/* Social links — desktop only */}
+      {/* <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden xl:flex flex-col items-center gap-5 pr-4">
+        {['INSTAGRAM', 'FACEBOOK', 'TWITTER'].map((social) => (
+          <span
+            key={social}
+            className="text-xs font-bold tracking-widest uppercase cursor-pointer hover:opacity-60 transition-opacity"
+            style={{ writingMode: 'vertical-rl', color: '#2d1050', letterSpacing: '0.18em' }}
+          >
+            {social}
+          </span>
+        ))}
+      </div> */}
+
+      {/* Floating chat + cart */}
+      <div className="absolute bottom-6 left-3 z-20 flex flex-col gap-3">
+        {[{ icon: '💬', label: 'chat' }, { icon: '🛒', label: 'cart' }].map(({ icon, label }) => (
+          <button
+            key={label}
+            aria-label={label}
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-base shadow-md transition-transform hover:scale-105"
+            style={{ background: 'linear-gradient(135deg, #d63384, #a0206e)', color: 'white' }}
+          >
+            {icon}
+          </button>
+        ))}
+      </div>
+
+      {/* LET'S TALK pill — desktop only */}
+      <div className="absolute bottom-12 right-0 z-20 hidden xl:flex">
+        <button
+          className="font-extrabold text-xs tracking-widest uppercase text-white px-3 py-5 rounded-l-full shadow-xl"
+          style={{ writingMode: 'vertical-rl', background: '#2d1050', letterSpacing: '0.2em' }}
+        >
+          LET&apos;S TALK
+        </button>
       </div>
     </section>
   );
 };
 
-export default HeroSection;
+export default HeroSection

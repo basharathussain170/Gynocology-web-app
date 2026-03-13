@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FiUser, FiMail, FiPhone, FiCalendar, FiChevronDown, FiArrowRight } from 'react-icons/fi'
-import { MdShield } from 'react-icons/md'
+import { MdOutlineHealthAndSafety } from 'react-icons/md'
 
 const AppointmentSection = () => {
   const [formData, setFormData] = useState({
@@ -12,98 +12,127 @@ const AppointmentSection = () => {
     alert('Appointment booked successfully!')
   }
 
+  const inputClass =
+    'w-full pl-5 pr-11 py-4 rounded-full border border-gray-200 bg-white focus:outline-none focus:border-pink-400 text-sm font-medium placeholder-gray-400 text-gray-700'
+
   return (
-    <section id="appointment" className="relative py-20 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gray-50">
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-end overflow-hidden">
-          <div className="w-full h-full bg-gradient-to-l from-gray-200 to-gray-100 flex items-center justify-center">
-            <div className="text-center text-gray-400">
-              <div className="text-8xl mb-4">👶</div>
-              <p className="text-lg font-semibold">Appointment Image</p>
-              <p className="text-sm">Replace with mother-baby photo</p>
-            </div>
-          </div>
-        </div>
+    <section
+      id="appointment"
+      className="relative overflow-hidden"
+      style={{ background: '#f5f5f7', minHeight: '420px' }}
+    >
+      {/* Right-side B&W photo */}
+      <div
+        className="absolute top-0 right-0 bottom-0 hidden lg:block"
+        style={{ width: '48%' }}
+      >
+        <img
+          src="/Home-img/aa.png"
+          alt="Mother with baby"
+          className="w-full h-full object-cover object-center"
+          style={{ filter: 'grayscale(100%)' }}
+        />
+        {/* left-fade blend */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to right, #f5f5f7 0%, transparent 18%)' }}
+        />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-xl">
-          <p className="section-tag">
-            <MdShield className="text-primary text-xl" />
+      {/* Left content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20">
+        <div style={{ maxWidth: '580px' }}>
+
+          {/* Tag */}
+          <p
+            className="flex items-center gap-2 font-extrabold text-xs tracking-widest uppercase mb-4"
+            style={{ color: '#d63384', letterSpacing: '0.18em' }}
+          >
+            <MdOutlineHealthAndSafety size={17} />
             MAKE APPOINTMENT
           </p>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-8">
-            <span className="text-secondary">Make An </span>
-            <span className="text-primary">Appointment</span>
+
+          {/* Heading */}
+          <h2
+            className="font-extrabold mb-10"
+            style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', lineHeight: 1.15 }}
+          >
+            <span style={{ color: '#2d1050' }}>Make An </span>
+            <span style={{ color: '#d63384' }}>Appointment</span>
           </h2>
 
+          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Row 1 */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {/* Name */}
               <div className="relative">
                 <input
                   type="text"
                   placeholder="Your Name"
                   value={formData.name}
-                  onChange={e => setFormData({...formData, name: e.target.value})}
-                  className="w-full pl-4 pr-10 py-3.5 rounded-full border border-gray-200 bg-white/80 focus:outline-none focus:border-primary text-sm font-medium placeholder-gray-400"
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
+                  className={inputClass}
                 />
-                <FiUser className="absolute right-4 top-1/2 -translate-y-1/2 text-primary" />
+                <FiUser className="absolute right-4 top-1/2 -translate-y-1/2" style={{ color: '#d63384' }} />
               </div>
-              {/* Email */}
               <div className="relative">
                 <input
                   type="email"
                   placeholder="Your Email"
                   value={formData.email}
-                  onChange={e => setFormData({...formData, email: e.target.value})}
-                  className="w-full pl-4 pr-10 py-3.5 rounded-full border border-gray-200 bg-white/80 focus:outline-none focus:border-primary text-sm font-medium placeholder-gray-400"
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  className={inputClass}
                 />
-                <FiMail className="absolute right-4 top-1/2 -translate-y-1/2 text-primary" />
+                <FiMail className="absolute right-4 top-1/2 -translate-y-1/2" style={{ color: '#d63384' }} />
               </div>
-              {/* Phone */}
               <div className="relative">
                 <input
                   type="tel"
                   placeholder="Phone Number"
                   value={formData.phone}
-                  onChange={e => setFormData({...formData, phone: e.target.value})}
-                  className="w-full pl-4 pr-10 py-3.5 rounded-full border border-gray-200 bg-white/80 focus:outline-none focus:border-primary text-sm font-medium placeholder-gray-400"
+                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                  className={inputClass}
                 />
-                <FiPhone className="absolute right-4 top-1/2 -translate-y-1/2 text-primary" />
+                <FiPhone className="absolute right-4 top-1/2 -translate-y-1/2" style={{ color: '#d63384' }} />
               </div>
             </div>
 
+            {/* Row 2 */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {/* DateTime */}
               <div className="relative">
                 <input
-                  type="datetime-local"
+                  type="text"
+                  placeholder="Date Time"
+                  onFocus={e => (e.target.type = 'datetime-local')}
+                  onBlur={e => { if (!e.target.value) e.target.type = 'text' }}
                   value={formData.datetime}
-                  onChange={e => setFormData({...formData, datetime: e.target.value})}
-                  className="w-full pl-4 pr-10 py-3.5 rounded-full border border-gray-200 bg-white/80 focus:outline-none focus:border-primary text-sm font-medium text-gray-500"
+                  onChange={e => setFormData({ ...formData, datetime: e.target.value })}
+                  className={inputClass}
                 />
-                <FiCalendar className="absolute right-4 top-1/2 -translate-y-1/2 text-primary pointer-events-none" />
+                <FiCalendar className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: '#d63384' }} />
               </div>
-              {/* Doctor */}
               <div className="relative">
                 <select
                   value={formData.doctor}
-                  onChange={e => setFormData({...formData, doctor: e.target.value})}
-                  className="w-full pl-4 pr-10 py-3.5 rounded-full border border-gray-200 bg-white/80 focus:outline-none focus:border-primary text-sm font-medium text-gray-400 appearance-none"
+                  onChange={e => setFormData({ ...formData, doctor: e.target.value })}
+                  className={inputClass + ' appearance-none cursor-pointer'}
+                  style={{ paddingRight: '2.5rem' }}
                 >
                   <option value="">Doctor Name</option>
                   <option value="dr-smith">Dr. Sarah Smith</option>
                   <option value="dr-johnson">Dr. Emily Johnson</option>
                   <option value="dr-williams">Dr. Lisa Williams</option>
                 </select>
-                <FiChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-primary pointer-events-none" />
+                <FiChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: '#d63384' }} />
               </div>
-              {/* Submit */}
               <button
                 type="submit"
-                className="bg-primary hover:bg-primary-dark text-white py-3.5 rounded-full font-bold flex items-center justify-center gap-2 transition-all duration-300 shadow-lg shadow-primary/30"
+                className="flex items-center justify-center gap-2 font-bold text-white rounded-full py-4 transition-all hover:opacity-90"
+                style={{
+                  background: 'linear-gradient(135deg, #d63384 0%, #c0267a 100%)',
+                  boxShadow: '0 8px 24px rgba(214,51,132,0.35)',
+                  fontSize: '0.95rem',
+                }}
               >
                 Appointment <FiArrowRight />
               </button>

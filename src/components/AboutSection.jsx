@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FiArrowRight, FiPhone } from 'react-icons/fi'
-import { LuShieldPlus } from "react-icons/lu";
-import { GiCheckMark } from "react-icons/gi";
+import { MdOutlineHealthAndSafety } from 'react-icons/md'
 
 const AboutSection = () => {
   const features = [
@@ -17,69 +16,112 @@ const AboutSection = () => {
     <section id="about-us" className="py-20 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Image */}
+
+          {/* Left — actual image */}
           <div className="relative">
-            <div className="rounded-3xl overflow-hidden h-[480px] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center shadow-xl">
-              <div className="text-center text-gray-400 p-8">
-                <div className="text-8xl mb-4">🏥</div>
-                <p className="text-lg font-semibold">About Us Image</p>
-                <p className="text-sm">Replace with doctor-patient photo</p>
-              </div>
-            </div>
-            {/* Experience badge */}
-            <div className="absolute -bottom-6 -right-6 bg-[#db479d] text-white rounded-2xl p-5 shadow-xl text-center">
-              <div className="text-3xl font-extrabold">15+</div>
-              <div className="text-xs font-semibold opacity-90">Years of<br />Excellence</div>
+            <div className="rounded-3xl overflow-hidden shadow-xl" style={{ height: '460px' }}>
+              <img
+                src="/Home-img/img1.webp"
+                alt="Doctor with patient"
+                className="w-full h-full object-cover object-center"
+              />
             </div>
           </div>
 
           {/* Right Content */}
           <div>
-            <p className="section-tag text-lg">
-              <LuShieldPlus className="text-[#db479d]" size={22}/>
+            {/* "ABOUT US" tag */}
+            <p
+              className="flex items-center gap-2 font-extrabold text-xs tracking-widest uppercase mb-4"
+              style={{ color: '#d63384', letterSpacing: '0.18em' }}
+            >
+              <MdOutlineHealthAndSafety size={18} style={{ color: '#d63384' }} />
               ABOUT US
             </p>
-           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-secondary font-sans">
-              <span className="block md:mb-3">Your Trusted Partner</span>
-              <span className="block md:mb-3 text-secondary">
-                in Gynecological Care
-              </span>
-            </h1>
-            <p className="text-gray-500 text-base leading-relaxed mb-8">
-              Experience the future of healthcare. Our state-of-the-art facilities are equipped with the latest technology, ensuring you receive the world's best quality treatment.
+
+            {/* Heading */}
+            <h2
+              className="font-extrabold leading-tight mb-5"
+              style={{
+                fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
+                color: '#2d1050',
+                lineHeight: 1.2,
+              }}
+            >
+              Your Trusted Partner<br />
+              in Gynecological Care
+            </h2>
+
+            {/* Description */}
+            <p className="text-gray-500 text-sm leading-relaxed mb-8" style={{ maxWidth: '460px' }}>
+              Experience the future of healthcare. Our state-of-the-art facilities are equipped
+              with the latest technology, ensuring you receive the world's best quality treatment.
             </p>
 
-            <div className="grid grid-cols-2 gap-3 mb-8">
+            {/* Feature checklist — 2 columns */}
+            <div
+              className="grid grid-cols-2 gap-x-6 gap-y-3 mb-10"
+              style={{ maxWidth: '480px' }}
+            >
               {features.map((feat) => (
-                <div key={feat} className="check-item">
-                  <GiCheckMark className="text-[#db479d] flex-shrink-0" />
-                  <span className="text-lg">{feat}</span>
+                <div key={feat} className="flex items-center gap-2">
+                  {/* Pink checkmark */}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="flex-shrink-0"
+                  >
+                    <path
+                      d="M3 8.5L6.5 12L13 5"
+                      stroke="#d63384"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="text-sm font-medium" style={{ color: '#2d1050' }}>
+                    {feat}
+                  </span>
                 </div>
               ))}
             </div>
 
+            {/* CTA row */}
             <div className="flex flex-wrap items-center gap-6">
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("about-us")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="flex items-center gap-2 bg-[#db479d] text-white shadow-lg text-lg px-8 py-3 rounded-full hover:bg-[#c63f8e] transition"
+              {/* About Us button */}
+              <Link
+                to="/about"
+                className="flex items-center gap-2 font-bold text-white rounded-full px-8 py-4 transition-all hover:opacity-90 hover:shadow-lg"
+                style={{
+                  background: 'linear-gradient(135deg, #d63384 0%, #c0267a 100%)',
+                  boxShadow: '0 8px 24px rgba(214,51,132,0.35)',
+                  fontSize: '0.95rem',
+                }}
               >
                 About Us <FiArrowRight />
-              </button>
+              </Link>
+
+              {/* Phone */}
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <FiPhone className="text-[#db479d] text-xl" />
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center border-2"
+                  style={{ borderColor: '#d63384' }}
+                >
+                  <FiPhone size={18} style={{ color: '#d63384' }} />
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 font-medium">Contact us</p>
-                  <p className="font-bold text-secondary">+1 123 456 7890</p>
+                  <p className="font-extrabold text-base" style={{ color: '#2d1050' }}>
+                    +1 123 456 7890
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>

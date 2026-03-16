@@ -1,17 +1,18 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiArrowRight } from 'react-icons/fi'
-import { MdPregnantWoman } from "react-icons/md";
-import { FaBaby } from "react-icons/fa";
-import { GiBabyBottle } from "react-icons/gi";
-import { FaHeartbeat } from "react-icons/fa";
-import { FaStethoscope } from "react-icons/fa";
-import { FaBabyCarriage } from "react-icons/fa";
+import pregnant from "/help-img/reproduction.png"
+import pregnancy from "/help-img/pregnancy.png"
+import scan from "/help-img/ultrasound.png"
+import birth from "/help-img/baby-buggy.png"
+import care from "/help-img/baby_care.png"
+import feeding from "/help-img/feeding.png"
+
 const tabs = [
   {
     id: 'getting-pregnant',
     label: 'Getting Pregnant',
-    icon: <FaHeartbeat size={24} />,
+    icon:  <img src={pregnant} alt="pregnant" className="w-9 h-9 object-contain" />,
     image: '/Home-img/img4.webp',
     heading: 'Your Journey to Parenthood Starts Here',
     content: 'We provide comprehensive fertility evaluations, ovulation tracking, and personalized treatment plans to help you achieve your dream of becoming a parent.',
@@ -26,7 +27,7 @@ const tabs = [
   {
     id: 'pregnancy',
     label: 'Pregnancy',
-    icon: <MdPregnantWoman size={24} />,
+    icon: <img src={pregnancy} alt="pregnancy" className="w-9 h-9 object-contain" />,
     image: '/Home-img/img1 (2).webp',
     heading: 'Comprehensive Care at the Professional Pregnancy Center',
     content: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
@@ -41,7 +42,7 @@ const tabs = [
   {
     id: 'first-scan',
     label: 'Your First Scan',
-    icon: <FaStethoscope size={24} />,
+    icon:  <img src={scan} alt="scan" className="w-9 h-9 object-contain" />,
     image: '/Home-img/img3.webp',
     heading: "Your Baby's First Glimpse at the World",
     content: 'Experience the joy of seeing your baby for the first time with our state-of-the-art ultrasound technology and expert sonographers.',
@@ -56,7 +57,7 @@ const tabs = [
   {
     id: 'baby-birth',
     label: 'Baby Birth',
-    icon: <FaBabyCarriage size={24} />,
+    icon:  <img src={birth} alt="birth" className="w-9 h-9 object-contain" />,
     image: '/Home-img/img2.webp',
     heading: 'Safe and Supported Birthing Experience',
     content: 'Our expert team ensures you have a safe, comfortable, and memorable birthing experience with 24/7 support from our dedicated professionals.',
@@ -71,7 +72,7 @@ const tabs = [
   {
     id: 'baby-care',
     label: 'Baby Care',
-    icon: <FaBaby size={24} />,
+    icon: <img src={care} alt="care" className="w-9 h-9 object-contain" />,
     image: '/Home-img/img1 (1).webp',
     heading: 'Expert Newborn Care and Support',
     content: 'We provide comprehensive newborn care services to ensure your baby gets the best start in life with expert medical guidance.',
@@ -86,7 +87,7 @@ const tabs = [
   {
     id: 'feeding-baby',
     label: 'Feeding Baby',
-    icon: <GiBabyBottle size={24} />,
+    icon: <img src={feeding} alt="feeding" className="w-9 h-9 object-contain" />,
     image: '/Home-img/img6.webp',
     heading: 'Supporting Your Breastfeeding Journey',
     content: 'Our lactation consultants and nutrition experts are here to support you and your baby through every step of the feeding journey.',
@@ -118,7 +119,7 @@ const WhoWeHelp = () => {
 
         {/* Tab bar */}
         <div
-          className="flex flex-wrap w-full justify-center gap-1 sm:gap-2 rounded-2xl p-2 shadow-sm mb-12 mx-auto"
+          className="flex flex-wrap lg:flex-nowrap w-full justify-center gap-1 sm:gap-2 rounded-2xl p-2 shadow-sm mb-12 mx-auto overflow-x-auto"
           style={{ background: '#ffffff', maxWidth: '1000px' }}
         >
           {tabs.map(tab => {
@@ -127,16 +128,18 @@ const WhoWeHelp = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className="flex items-center gap-2 font-semibold rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 transition-all text-sm whitespace-nowrap"
+                className="flex items-center gap-2 font-semibold rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 transition-all text-base whitespace-nowrap hover:text-[#db479d]"
                 style={{
-                  background: isActive
-                    ? 'linear-gradient(135deg, #d63384 0%, #c0267a 100%)'
-                    : 'transparent',
+                  background: isActive ? '#db479d' : 'transparent',
                   color: isActive ? '#ffffff' : '#2d1050',
-                  boxShadow: isActive ? '0 4px 14px rgba(214,51,132,0.3)' : 'none',
+                  // boxShadow: isActive ? '0 4px 14px rgba(219,71,157,0.3)' : 'none',
                 }}
               >
-                <span style={{ fontSize: '1.1rem' }}>{tab.icon}</span>
+                <img
+                  src={tab.icon.props.src}
+                  alt={tab.icon.props.alt}
+                  className={`w-9 h-9 object-contain ${isActive ? 'brightness-0 invert' : ''}`}
+                />
                 <span className="hidden sm:inline">{tab.label}</span>
               </button>
             )

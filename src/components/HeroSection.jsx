@@ -72,8 +72,7 @@ const HeroSection = () => {
           {/* Tag */}
           <div ref={tagRef} className={tagVisible ? 'scroll-animate-left visible' : 'scroll-animate-left'}>
             <p
-              className="font-extrabold tracking-widest uppercase mb-3"
-              style={{ color: '#d63384', letterSpacing: '0.2em', fontSize: 'clamp(0.7rem, 2vw, 0.82rem)' }}
+              className="font-extrabold tracking-widest uppercase mb-3 text-[#db479d]"
             >
               GYNECOLOGY
             </p>
@@ -82,10 +81,10 @@ const HeroSection = () => {
           {/* Heading */}
           <div ref={headingRef} className={headingVisible ? 'scroll-animate-left visible scroll-animate-stagger-1' : 'scroll-animate-left scroll-animate-stagger-1'}>
             <h1
-              className="font-extrabold leading-tight mb-4"
+              className="font-bold leading-tight mb-4 font-sans"
               style={{
                 fontSize: 'clamp(1.5rem, 4vw, 3.4rem)',
-                color: '#2d1050',
+                color: '#3d203f',
                 lineHeight: 1.18,
               }}
             >
@@ -115,13 +114,8 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row flex-wrap items-center gap-3 sm:gap-4 lg:gap-6">
               <Link
                 to="/about"
-                className="flex items-center gap-2 font-bold text-white rounded-full transition-all hover:opacity-90 hover:shadow-lg w-full sm:w-auto justify-center sm:justify-start"
-                style={{
-                  background: 'linear-gradient(135deg, #d63384 0%, #c0267a 100%)',
-                  boxShadow: '0 8px 24px rgba(214,51,132,0.35)',
-                  fontSize: 'clamp(0.8rem, 1.2vw, 1rem)',
-                  padding: 'clamp(0.75rem, 2vw, 0.85rem) clamp(1.2rem, 3vw, 1.8rem)',
-                }}
+                className="flex items-center gap-2  text-white rounded-full transition-all hover:opacity-90 hover:shadow-lg w-full sm:w-auto justify-center sm:justify-start bg-[#db479d] px-6 py-4 font-normal"
+              
               >
                 Read More <FiArrowRight />
               </Link>

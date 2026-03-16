@@ -3,6 +3,7 @@ import { FiArrowUpRight } from 'react-icons/fi'
 import { AiFillStar } from 'react-icons/ai'
 import { MdOutlineHealthAndSafety } from 'react-icons/md'
 import { BsChatQuote } from 'react-icons/bs'
+import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const testimonials = [
   {
@@ -31,13 +32,16 @@ const total = 6
 
 const TestimonialsSection = () => {
   const [current, setCurrent] = useState(1)
+  const [sectionRef, sectionVisible] = useScrollAnimation(0.1);
+  const [headerRef, headerVisible] = useScrollAnimation(0.1);
+  const [testimonialsRef, testimonialsVisible] = useScrollAnimation(0.1);
 
   return (
-    <section className="py-20" style={{ background: '#f5f5f7' }}>
+    <section ref={sectionRef} className="py-16 sm:py-20" style={{ background: '#f5f5f7' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Header row ── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div ref={headerRef} className={`flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 ${headerVisible ? 'scroll-animate visible' : 'scroll-animate'}`}>
           <div>
             <p
               className="flex items-center gap-2 font-extrabold text-xs tracking-widest uppercase mb-3"
@@ -88,11 +92,11 @@ const TestimonialsSection = () => {
         </div>
 
         {/* ── Testimonial cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {testimonials.map((t) => (
+        <div ref={testimonialsRef} className={`grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 ${testimonialsVisible ? 'scroll-animate visible' : 'scroll-animate'}`}>
+          {testimonials.map((t, index) => (
             <div
               key={t.id}
-              className="flex bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className={`flex bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-animate-scale ${testimonialsVisible ? 'visible' : ''} scroll-animate-stagger-${index + 1}`}
               style={{ minHeight: '280px' }}
             >
               {/* Left: photo with play button overlay */}

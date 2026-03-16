@@ -2,19 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * {
-    box-sizing: border-box;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
+/* CSS Reset for UI spacing fix */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    font-family: 'Nunito', sans-serif;
-    color: #2d1b4e;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #2d1b4e;
+  line-height: 1.6;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Remove all default margins for common elements */
+h1, h2, h3, h4, h5, h6,
+p, ul, ol, li, figure, figcaption,
+blockquote, dl, dd, dt, fieldset, legend {
+  margin: 0;
+  padding: 0;
+}
+
+/* Fix container and section spacing */
+section, .container, .container-fluid {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Ensure proper layout */
+main, header, footer, nav, aside {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Remove list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Remove button defaults */
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+/* Remove link defaults */
+a {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Image fixes */
+img {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  height: auto;
 }
 
 @layer components {
@@ -116,4 +181,102 @@
 
 .pregnancy-figure:hover svg {
   transform: scale(1.05);
+}
+
+/* Scroll animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-animate-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-animate-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-animate-scale {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered animations */
+.scroll-animate-stagger-1 { transition-delay: 0.1s; }
+.scroll-animate-stagger-2 { transition-delay: 0.2s; }
+.scroll-animate-stagger-3 { transition-delay: 0.3s; }
+.scroll-animate-stagger-4 { transition-delay: 0.4s; }
+.scroll-animate-stagger-5 { transition-delay: 0.5s; }
+.scroll-animate-stagger-6 { transition-delay: 0.6s; }
+
+/* Fix UI spacing */
+section {
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default margins and paddings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Fix overflow issues */
+.overflow-hidden-x {
+  overflow-x: hidden;
+}
+
+/* Ensure proper spacing for all sections */
+.section-spacing {
+  margin: 0;
+  padding: 4rem 0;
+}
+
+@media (max-width: 640px) {
+  .section-spacing {
+    padding: 2rem 0;
+  }
 }

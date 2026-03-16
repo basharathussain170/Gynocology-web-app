@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom'
 import { FiArrowRight } from 'react-icons/fi'
 import { BsPlayCircle } from 'react-icons/bs'
+import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const HeroSection = () => {
+  const [contentRef, contentVisible] = useScrollAnimation(0.1);
+  const [tagRef, tagVisible] = useScrollAnimation(0.1);
+  const [headingRef, headingVisible] = useScrollAnimation(0.1);
+  const [subtitleRef, subtitleVisible] = useScrollAnimation(0.1);
+  const [ctaRef, ctaVisible] = useScrollAnimation(0.1);
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white">
+    <section className="relative min-h-screen overflow-hidden bg-white m-0 p-0">
 
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-no-repeat m-0 p-0"
         style={{
           backgroundImage: "url('/Home-img/banner-1.webp')",
           backgroundPosition: 'right center',
@@ -59,65 +66,74 @@ const HeroSection = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-20 min-h-screen flex items-center">
-        <div className="w-full lg:max-w-xl pt-24 pb-16 sm:pt-32 sm:pb-20 lg:py-24">
+      <div ref={contentRef} className={`relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-20 min-h-screen flex items-center ${contentVisible ? 'scroll-animate visible' : 'scroll-animate'}`}>
+        <div className="w-full lg:max-w-xl xl:max-w-2xl pt-20 pb-12 sm:pt-24 sm:pb-16 lg:py-20 xl:py-24">
 
           {/* Tag */}
-          <p
-            className="font-extrabold tracking-widest uppercase mb-3"
-            style={{ color: '#d63384', letterSpacing: '0.2em', fontSize: '0.82rem' }}
-          >
-            GYNECOLOGY
-          </p>
+          <div ref={tagRef} className={tagVisible ? 'scroll-animate-left visible' : 'scroll-animate-left'}>
+            <p
+              className="font-extrabold tracking-widest uppercase mb-3"
+              style={{ color: '#d63384', letterSpacing: '0.2em', fontSize: 'clamp(0.7rem, 2vw, 0.82rem)' }}
+            >
+              GYNECOLOGY
+            </p>
+          </div>
 
           {/* Heading */}
-          <h1
-            className="font-extrabold leading-tight mb-4"
-            style={{
-              fontSize: 'clamp(1.65rem, 5vw, 3.4rem)',
-              color: '#2d1050',
-              lineHeight: 1.18,
-            }}
-          >
-            We want you to experience
-            birthing with lots of love!
-          </h1>
-
-          {/* Subtitle */}
-          <p
-            className="leading-relaxed mb-8"
-            style={{
-              fontSize: 'clamp(0.875rem, 1.4vw, 1rem)',
-              color: '#555',
-              maxWidth: '480px',
-            }}
-          >
-            It is a long established fact that a reader will be distracted by the
-            readable content of a page when looking at its layout.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-            <Link
-              to="/about"
-              className="flex items-center gap-2 font-bold text-white rounded-full transition-all hover:opacity-90 hover:shadow-lg"
+          <div ref={headingRef} className={headingVisible ? 'scroll-animate-left visible scroll-animate-stagger-1' : 'scroll-animate-left scroll-animate-stagger-1'}>
+            <h1
+              className="font-extrabold leading-tight mb-4"
               style={{
-                background: 'linear-gradient(135deg, #d63384 0%, #c0267a 100%)',
-                boxShadow: '0 8px 24px rgba(214,51,132,0.35)',
-                fontSize: 'clamp(0.85rem, 1.3vw, 1rem)',
-                padding: '0.85rem 1.8rem',
+                fontSize: 'clamp(1.5rem, 4vw, 3.4rem)',
+                color: '#2d1050',
+                lineHeight: 1.18,
               }}
             >
-              Read More <FiArrowRight />
-            </Link>
+              We want you to experience
+              birthing with lots of love!
+            </h1>
+          </div>
 
-            <button
-              className="flex items-center gap-2 font-semibold transition-opacity hover:opacity-70"
-              style={{ color: '#2d1050', fontSize: 'clamp(0.85rem, 1.3vw, 1rem)' }}
+          {/* Subtitle */}
+          <div ref={subtitleRef} className={subtitleVisible ? 'scroll-animate-left visible scroll-animate-stagger-2' : 'scroll-animate-left scroll-animate-stagger-2'}>
+            <p
+              className="leading-relaxed mb-6 sm:mb-8"
+              style={{
+                fontSize: 'clamp(0.8rem, 1.2vw, 1rem)',
+                color: '#555',
+                maxWidth: '100%',
+                sm: { maxWidth: '480px' }
+              }}
             >
-              <BsPlayCircle size={20} style={{ color: '#d63384' }} />
-              Watch Highlight
-            </button>
+              It is a long established fact that a reader will be distracted by the
+              readable content of a page when looking at its layout.
+            </p>
+          </div>
+
+          {/* CTAs */}
+          <div ref={ctaRef} className={`cta-container ${ctaVisible ? 'scroll-animate visible scroll-animate-stagger-3' : 'scroll-animate scroll-animate-stagger-3'}`}>
+            <div className="flex flex-col sm:flex-row flex-wrap items-center gap-3 sm:gap-4 lg:gap-6">
+              <Link
+                to="/about"
+                className="flex items-center gap-2 font-bold text-white rounded-full transition-all hover:opacity-90 hover:shadow-lg w-full sm:w-auto justify-center sm:justify-start"
+                style={{
+                  background: 'linear-gradient(135deg, #d63384 0%, #c0267a 100%)',
+                  boxShadow: '0 8px 24px rgba(214,51,132,0.35)',
+                  fontSize: 'clamp(0.8rem, 1.2vw, 1rem)',
+                  padding: 'clamp(0.75rem, 2vw, 0.85rem) clamp(1.2rem, 3vw, 1.8rem)',
+                }}
+              >
+                Read More <FiArrowRight />
+              </Link>
+
+              <button
+                className="flex items-center gap-2 font-semibold transition-opacity hover:opacity-70 w-full sm:w-auto justify-center sm:justify-start"
+                style={{ color: '#2d1050', fontSize: 'clamp(0.8rem, 1.2vw, 1rem)' }}
+              >
+                <BsPlayCircle size={20} style={{ color: '#d63384' }} />
+                Watch Highlight
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -136,12 +152,12 @@ const HeroSection = () => {
       </div> */}
 
       {/* Floating chat + cart */}
-      <div className="absolute bottom-6 left-3 z-20 flex flex-col gap-3">
+      <div className="absolute bottom-4 sm:bottom-6 left-3 sm:left-6 z-20 flex flex-col gap-3">
         {[{ icon: '💬', label: 'chat' }, { icon: '🛒', label: 'cart' }].map(({ icon, label }) => (
           <button
             key={label}
             aria-label={label}
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-base shadow-md transition-transform hover:scale-105"
+            className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 rounded-full flex items-center justify-center text-base sm:text-lg shadow-md transition-transform hover:scale-105"
             style={{ background: 'linear-gradient(135deg, #d63384, #a0206e)', color: 'white' }}
           >
             {icon}

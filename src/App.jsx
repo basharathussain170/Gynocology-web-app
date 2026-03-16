@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen m-0 p-0 overflow-x-hidden">
       <Navbar />
       <FloatingButtons />
       <Routes>
